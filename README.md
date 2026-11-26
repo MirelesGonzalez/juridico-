@@ -16,6 +16,7 @@ El repositorio se organiza en módulos desacoplados con responsabilidades claras
 
 * **`apps/`**
   Aplicaciones construidas sobre LEGAL-OS (ej. gestores de casos, compliance, automatización contractual).
+  Incluye el asistente personal local en `apps/asistente-personal/` para agenda, pendientes por expediente y cotizaciones.
 
 * **`templates/`**
   Plantillas reutilizables: contratos, escritos, formatos procesales y documentos legales parametrizables.
@@ -25,6 +26,9 @@ El repositorio se organiza en módulos desacoplados con responsabilidades claras
 
 * **`scripts/`**
   Automatizaciones, ETL jurídico, parsers normativos y utilidades operativas.
+
+* **Memoria persistente**
+  Integración documental y de esquema con AgentMemory. La memoria conserva contexto operativo y trazas entre sesiones, pero no sustituye las fuentes jurídicas canonicas ni modifica el motor de reglas. Ver `docs/agent-memory.md` y `examples/schemas/agent_memory_record.schema.json`.
 
 ---
 

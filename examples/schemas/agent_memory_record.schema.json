@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://legal-os.local/schemas/agent_memory_record.schema.json",
+  "title": "AgentMemoryRecord",
+  "description": "Registro operativo y persistente de contexto. No sustituye a las fuentes jurídicas canonicas.",
+  "type": "object",
+  "required": [
+    "id",
+    "scope",
+    "type",
+    "content",
+    "classification",
+    "provenance",
+    "status",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^memory:[a-z0-9][a-z0-9_-]*$"
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["daily", "long_term", "scratchpad", "topic"]
+    },
+    "topic": {
+      "type": ["string", "null"],
+      "maxLength": 120
+    },
+    "type": {
+      "type": "string",
+      "enum": ["decision", "finding", "todo", "session_note", "preference", "reference"]
+    },
+    "content": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20000
+    },
+    "classification": {
+      "type": "string",
+      "enum": ["public", "internal", "confidential", "restricted"]
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["origin"],
+      "properties": {
+        "origin": {
+          "type": "string",
+          "enum": ["human", "agent", "session", "document", "system"]
+        },
+        "session_id": {
+          "type": ["string", "null"]
+        },
+        "actor": {
+          "type": ["string", "null"],
+          "maxLength": 200
+        },
+        "source": {
+          "type": ["string", "null"],
+          "maxLength": 500
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "obsolete", "revised", "deleted"]
+    },
+    "supersedes": {
+      "type": ["string", "null"],
+      "pattern": "^memory:[a-z0-9][a-z0-9_-]*$"
+    },
+    "legal_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^((norm|case|concept|actor|event|obligation):).+$"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "ref"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["file", "document", "url", "session", "tool_result", "other"]
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "hash": {
+            "type": ["string", "null"],
+            "pattern": "^sha256:[a-fA-F0-9]{64}$"
+          }
+        },
+        "additionalProperties": false
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^#[a-zA-Z0-9_:-]+$",
+        "maxLength": 80
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "expires_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
