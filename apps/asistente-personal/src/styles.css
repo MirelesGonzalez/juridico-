@@ -34,6 +34,7 @@ button { cursor: pointer; }
 .sidebar-bottom p { color: #909993; font-size: 9px; font-weight: 700; letter-spacing: .12em; margin: 0 8px 10px; }
 .sidebar-bottom .button { width: 100%; margin-bottom: 7px; justify-content: flex-start; }
 .sidebar-bottom small { color: #929b96; display: block; font-size: 10px; line-height: 1.5; padding: 8px; }
+.privacy-badge { margin: 0 8px 9px; border: 1px solid #cfe2d6; border-radius: 6px; background: #edf6f0; color: #315e49; padding: 7px 8px; font-size: 9px; font-weight: 700; }
 .import-button { position: relative; overflow: hidden; }
 .import-button input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 .main-content { width: min(1200px, 100%); margin: 0 auto; padding: 44px 48px 80px; position: relative; }

@@ -2,6 +2,8 @@
 
 Aplicación personal para organizar citas, audiencias y juntas; asociar pendientes a expedientes; y generar cotizaciones de honorarios por etapas.
 
+Uso exclusivo personal. El servidor de desarrollo escucha únicamente en `127.0.0.1` y no se publica en una red ni en Internet por esta configuración.
+
 ## Requisitos
 
 - Node.js 20.19+ o 22.12+

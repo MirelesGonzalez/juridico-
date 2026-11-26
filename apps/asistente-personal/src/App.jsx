@@ -212,6 +212,7 @@ function App() {
           ))}
           <div className="sidebar-bottom">
             <p>DATOS EN ESTE DISPOSITIVO</p>
+            <div className="privacy-badge">Uso personal · Acceso local</div>
             <Button onClick={exportBackup}>↓ Exportar respaldo</Button>
             <label className="button secondary import-button">↑ Importar respaldo<input type="file" accept="application/json,.json" onChange={event => event.target.files?.[0] && importBackup(event.target.files[0])} /></label>
             <small>Los registros se guardan localmente en este navegador.</small>
